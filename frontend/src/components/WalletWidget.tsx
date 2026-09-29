@@ -14,7 +14,7 @@ interface WalletWidgetProps {
 }
 
 function truncateAddress(key: string): string {
-  return `${key.slice(0, 4)}․${key.slice(-4)}`;
+  return `${key.slice(0, 4)}"…`${key.slice(-4)}`;
 }
 
 export function WalletWidget({

@@ -50,10 +50,6 @@ export function WalletPickerModal({
         onClose();
         return;
       }
-      if (e.key === 'Enter' && document.activeElement === modalRef.current) {
-        e.preventDefault();
-        return;
-      }
       if (e.key === 'Tab' && modalRef.current) {
         const focusable = modalRef.current.querySelectorAll<HTMLElement>(
           'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
@@ -61,6 +57,7 @@ export function WalletPickerModal({
         if (focusable.length === 0) return;
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
+        if (!modalRef.current.contains(document.activeElement)) return;
         if (e.shiftKey && document.activeElement === first) {
           e.preventDefault();
           last.focus();
@@ -86,13 +83,13 @@ export function WalletPickerModal({
         ref={modalRef}
         className="modal wallet-picker-modal"
         role="dialog"
-        tabIndex={-1}
         aria-modal="true"
-        aria-labelledby="wallet-picker-title"
+        aria-labelledby={titleId}
+        aria-describedby="wallet-picker-terms"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-header">
-          <h2 id="wallet-picker-title">Connect Wallet</h2>
+          <h2 id={titleId}>Connect Wallet</h2>
           <button
             ref={closeButtonRef}
             className="btn-ghost modal-close"
@@ -105,21 +102,21 @@ export function WalletPickerModal({
 
         <div className="modal-body">
           {isLoading ? (
-            <div className="wallet-picker-loading" role="status" aria-live="polite" aria-busy="true">
+            <div className="wallet-picker-loading" role="status" aria-live="polite">
               <p className="muted">Detecting wallets...</p>
             </div>
           ) : (
-            <div className="wallet-list" role="list" aria-label="Available wallets">
+            <ul className="wallet-list" aria-label="Available wallets">
               {wallets.map((wallet) => {
                 const isConnectingThis = connectingWallet === wallet.id;
-
+                
                 return (
+                  <li key={wallet.id} className="wallet-option-item">
                   <button
                     key={wallet.id}
                     className={`wallet-option ${wallet.detected ? 'wallet-option--available' : 'wallet-option--unavailable'}`}
                     onClick={() => wallet.detected && !isConnecting && onSelectWallet(wallet.id)}
                     disabled={!wallet.detected || isConnecting}
-                    role="listitem"
                     aria-label={
                       wallet.detected
                         ? isConnectingThis
@@ -128,7 +125,6 @@ export function WalletPickerModal({
                         : `${wallet.name}, not installed`
                     }
                     aria-busy={isConnectingThis || undefined}
-                    aria-disabled={!wallet.detected || isConnecting || undefined}
                   >
                     <div className="wallet-option-icon">
                       <span className="wallet-emoji">{wallet.icon}</span>
@@ -153,16 +149,16 @@ export function WalletPickerModal({
                         className="wallet-option-install"
                         aria-label={`Install ${wallet.name} (opens in new tab)`}
                         onClick={(e) => e.stopPropagation()}
-                        tabIndex={0}
                       >
                         <ExternalLink size={16} />
                         Install
                       </a>
                     )}
                   </button>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
           )}
         </div>
 
