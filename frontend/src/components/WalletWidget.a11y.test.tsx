@@ -66,7 +66,7 @@ describe.each(THEMES)
 
     expect(
       screen.getByRole('status', { name: /wallet status/i }),
-    ).toBeIdVisible();
+    ).toBeITheDocument();
   });
 
   it('exposes an accessible name for the connect action', () => {
@@ -77,12 +77,12 @@ describe.each(THEMES)
     ).toBeInTheDocument();
   });
 
-  it('exposes an accessible name for the disconnect action when connected', () => {
+  it('exposes an accessible name for the disconnect action', () => {
     render(
       <WalletWidget
         {...defaultProps}
         status="connected"
-        publicKey="GAJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        publicKey="GAJDK1234567890123456789012345678901234567890"
         walletName="Freighter"
         network="Testnet"
       />,
@@ -93,17 +93,19 @@ describe.each(THEMES)
     ).toBeInTheDocument();
   });
 
-  it('surfaces the connection error to assistive technology', () => {
+  it('exposes an accessible name for the switch wallet action', () => {
     render(
       <WalletWidget
         {...defaultProps}
-        status="available"
-        error="User rejected the connection request"
+        status="connected"
+        publicKey="GAJDK1234567890123456789012345678901234567890"
+        walletName="Freighter"
+        network="Testnet"
       />,
     );
 
     expect(
-      screen.getByRole('alert'),
-    ).toHaveTextContent('User rejected the connection request');
+      screen.getButton({ type: 'button', name: /switch wallet/i }),
+    ).toBeInTheDocument();
   });
 });

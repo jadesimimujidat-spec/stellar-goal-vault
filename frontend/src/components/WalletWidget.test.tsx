@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { WalletWidget } from './WalletWidget';
 
-const PUBLIC_KEY = 'GBBD47IF6LWK7P7MDEVSWCR7DP-UWV3NY3DTQEVFL4NAT4AQH3ZLLFLA';
+const PUBLIC_KEY = 'GBBD47IF6LWK7P7MDEVSCWR7DP-UWV3NY3DTQEVFL4NAT4AQH3ZLLFLA';
 
 function noop() {}
 
@@ -93,7 +93,7 @@ describe('WalletWidget', () => {
       />,
     );
     const badge = screen.getByText('Mainnet');
-    expect(badge.className).toContain('swallet-widget__network-badge--mainnet');
+    expect(badge.className).toContain('wallet-widget__network-badge--mainnet');
   });
 
   it('renders disconnect button that is keyboard accessible', () => {
@@ -138,7 +138,7 @@ describe('WalletWidget', () => {
         onDisconnect={noop}
       />,
     );
-    expect(screen.getText(/Wallet error occurred/i)).toBeTruthy();
+    expect(screen.getByText(/Wallet error occurred/i)).toBeTruthy();
   });
 
   it('exposes a status role while checking', () => {

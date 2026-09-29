@@ -14,7 +14,7 @@ interface WalletWidgetProps {
 }
 
 function truncateAddress(key: string): string {
-  return `${key.slice(0, 4)}"…`${key.slice(-4)}`;
+  return `${key.slice(0, 4)}․${key.slice(-4)}`;
 }
 
 export function WalletWidget({
@@ -64,7 +64,7 @@ export function WalletWidget({
       >
         <span className="wallet-widget__dot" aria-hidden="true" />
         <span className="wallet-widget__wallet-name">{displayWalletName}</span>
-        <span className="mono wallet-widget__address" title=publicKey>
+        <span className="mono wallet-widget__address" title={publicKey}>
           <span className="sr-only">Wallet address: </span>
           {truncateAddress(publicKey)}
         </span>
@@ -76,7 +76,7 @@ export function WalletWidget({
             {network}
           </span>
         )}
-        <CopyButton value=publicKey ariaLabel="Copy wallet address" />
+        <CopyButton value={publicKey} ariaLabel="Copy wallet address" />
         <button
           className="wallet-widget__switch btn-ghost"
           type="button"
