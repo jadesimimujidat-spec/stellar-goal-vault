@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { WalletWidget } from './WalletWidget';
 
-const PUBLIC_KEY = 'GBBD47IF6LWK7P7MDEVSCWR7DP-UWV3NY3DTQEVFL4NAT4AQH3ZLLFLA';
+const PUBLIC_KEY = 'GBBD47IF6LWK7P7MDEVSWCR7DP-UWV3NY3DTQEVFL4NAT4AQH3ZLLFLA';
 
 function noop() {}
 

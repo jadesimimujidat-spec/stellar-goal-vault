@@ -64,7 +64,7 @@ export function WalletWidget({
       >
         <span className="wallet-widget__dot" aria-hidden="true" />
         <span className="wallet-widget__wallet-name">{displayWalletName}</span>
-        <span className="mono wallet-widget__address" title={publicKey}>
+        <span className="mono wallet-widget__address" title=publicKey>
           <span className="sr-only">Wallet address: </span>
           {truncateAddress(publicKey)}
         </span>
@@ -75,8 +75,8 @@ export function WalletWidget({
             <span className="sr-only">Network: </span>
             {network}
           </span>
-        ):
-        <CopyButton value={publicKey} ariaLabel="Copy wallet address" />
+        )}
+        <CopyButton value=publicKey ariaLabel="Copy wallet address" />
         <button
           className="wallet-widget__switch btn-ghost"
           type="button"

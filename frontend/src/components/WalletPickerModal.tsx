@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { X, Wallet as WalletIcon, ExternalLink } from 'lucide-react';
 import { WalletInfo, WalletType, detectWallets, WALLET_INFO } from '../lib/wallet';
@@ -21,6 +22,7 @@ export function WalletPickerModal({
   const [isLoading, setIsLoading] = useState(true);
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const walletListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -37,6 +39,27 @@ export function WalletPickerModal({
     }
   }, [isOpen]);
 
+  const getFocusableElements = useCallback(() => {
+    if (!modalRef.current) return [] as HTMLElement[];
+    return Array.from(
+      modalRef.current.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+    );
+  }, []);
+
+  const focusWalletByIndex = useCallback(
+    (index: number) => {
+      const items = walletListRef.current?.querySelectorAll<HTMLButtonElement>(
+        'button.wallet-option:not([disabled])'
+      );
+      if (!items || items.length === 0) return;
+      const clamped = ((index % items.length) + items.length) % items.length;
+      items[clamped]?.focus();
+    },
+    []
+  );
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -49,10 +72,8 @@ export function WalletPickerModal({
         onClose();
         return;
       }
-      if (e.key === 'Tab' && modalRef.current) {
-        const focusable = modalRef.current.querySelectorAll<HTMLElement>(
-          'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
+      if (e.key === 'Tab') {
+        const focusable = getFocusableElements();
         if (focusable.length === 0) return;
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
@@ -63,6 +84,33 @@ export function WalletPickerModal({
           e.preventDefault();
           first.focus();
         }
+        return;
+      }
+      if (
+        (e.key === 'ArrowDown' || e.key === 'ArrowUp') &&
+        walletListRef.current?.contains(document.activeElement)
+      ) {
+        const items = Array.from(
+          walletListRef.current.querySelectorAll<HTMLButtonElement>(
+            'button.wallet-option:not([disabled])'
+          )
+        );
+        const currentIndex = items.indexOf(document.activeElement as HTMLButtonElement);
+        if (currentIndex === -1) return;
+        e.preventDefault();
+        focusWalletByIndex(e.key === 'ArrowDown' ? currentIndex + 1 : currentIndex - 1);
+        return;
+      }
+      if (
+        (e.key === 'Home' || e.key === 'End') &&
+        walletListRef.current?.contains(document.activeElement)
+      ) {
+        const items = walletListRef.current.querySelectorAll<HTMLButtonElement>(
+          'button.wallet-option:not([disabled])'
+        );
+        if (items.length === 0) return;
+        e.preventDefault();
+        focusWalletByIndex(e.key === 'Home' ? 0 : items.length - 1);
       }
     };
 
@@ -71,7 +119,7 @@ export function WalletPickerModal({
       document.removeEventListener('keydown', handleKeyDown);
       previouslyFocused?.focus?.();
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, getFocusableElements, focusWalletByIndex]);
 
   if (!isOpen) return null;
 
@@ -83,6 +131,7 @@ export function WalletPickerModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="wallet-picker-title"
+        aria-describedby="wallet-picker-terms"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-header">
@@ -103,7 +152,12 @@ export function WalletPickerModal({
               <p className="muted">Detecting wallets...</p>
             </div>
           ) : (
-            <div className="wallet-list" role="list" aria-label="Available wallets">
+            <div
+              ref={walletListRef}
+              className="wallet-list"
+              role="list"
+              aria-label="Available wallets"
+            >
               {wallets.map((wallet) => {
                 const isConnectingThis = connectingWallet === wallet.id;
                 
@@ -114,6 +168,7 @@ export function WalletPickerModal({
                     onClick={() => wallet.detected && !isConnecting && onSelectWallet(wallet.id)}
                     disabled={!wallet.detected || isConnecting}
                     role="listitem"
+                    tabIndex={wallet.detected && !isConnecting ? 0 : -1}
                     aria-label={
                       wallet.detected
                         ? isConnectingThis
@@ -122,6 +177,7 @@ export function WalletPickerModal({
                         : `${wallet.name}, not installed`
                     }
                     aria-busy={isConnectingThis || undefined}
+                    aria-disabled={!wallet.detected || isConnecting || undefined}
                   >
                     <div className="wallet-option-icon">
                       <span className="wallet-emoji">{wallet.icon}</span>
@@ -145,6 +201,7 @@ export function WalletPickerModal({
                         rel="noopener noreferrer"
                         className="wallet-option-install"
                         aria-label={`Install ${wallet.name} (opens in new tab)`}
+                        tabIndex={0}
                         onClick={(e) => e.stopPropagation()}
                       >
                         <ExternalLink size={16} />
@@ -159,7 +216,7 @@ export function WalletPickerModal({
         </div>
 
         <div className="modal-footer">
-          <p className="muted text-sm" id="wallet-picker-terms">
+          <p className="muted text-sm" id="wallet-picker-terms" role="note">
             By connecting a wallet, you agree to the terms of service.
           </p>
         </div>
