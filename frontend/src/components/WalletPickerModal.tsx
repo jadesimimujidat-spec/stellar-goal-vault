@@ -19,7 +19,7 @@ export function WalletPickerModal({
 }: WalletPickerModalProps) {
   const [wallets, setWallets] = useState<WalletInfo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const modalRef = useRef<HTMLDivElement>(null);
+const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const titleId = useId();
 
@@ -32,13 +32,13 @@ export function WalletPickerModal({
           setIsLoading(false);
         })
         .catch(() => {
-          setWallets(Object.values(WALLET_INFO).map(w => ({ ...w, detected: false })));
+          setWallets(Object.values(WALLET_INFO).map((w) => ({ ...w, detected: false })));
           setIsLoading(false);
         });
     }
   }, [isOpen]);
 
-  useEffect(() => {
+useEffect(() => {
     if (!isOpen) return;
 
     const previouslyFocused = document.activeElement as HTMLElement | null;
@@ -52,7 +52,7 @@ export function WalletPickerModal({
       }
       if (e.key === 'Tab' && modalRef.current) {
         const focusable = modalRef.current.querySelectorAll<HTMLElement>(
-          'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
         );
         if (focusable.length === 0) return;
         const first = focusable[0];
@@ -74,12 +74,11 @@ export function WalletPickerModal({
       previouslyFocused?.focus?.();
     };
   }, [isOpen, onClose]);
-
   if (!isOpen) return null;
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div
+<div
         ref={modalRef}
         className="modal wallet-picker-modal"
         role="dialog"
@@ -89,7 +88,7 @@ export function WalletPickerModal({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-header">
-          <h2 id={titleId}>Connect Wallet</h2>
+<h2 id={titleId}>Connect Wallet</h2>
           <button
             ref={closeButtonRef}
             className="btn-ghost modal-close"
@@ -106,10 +105,10 @@ export function WalletPickerModal({
               <p className="muted">Detecting wallets...</p>
             </div>
           ) : (
-            <ul className="wallet-list" aria-label="Available wallets">
+<ul className="wallet-list" aria-label="Available wallets">
               {wallets.map((wallet) => {
                 const isConnectingThis = connectingWallet === wallet.id;
-                
+
                 return (
                   <li key={wallet.id} className="wallet-option-item">
                   <button
@@ -117,6 +116,7 @@ export function WalletPickerModal({
                     className={`wallet-option ${wallet.detected ? 'wallet-option--available' : 'wallet-option--unavailable'}`}
                     onClick={() => wallet.detected && !isConnecting && onSelectWallet(wallet.id)}
                     disabled={!wallet.detected || isConnecting}
+role="listitem"
                     aria-label={
                       wallet.detected
                         ? isConnectingThis

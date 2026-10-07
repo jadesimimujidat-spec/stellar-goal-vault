@@ -36,7 +36,7 @@ const campaign: Campaign = {
 
 type Props = ComponentProps<typeof CampaignDetailPanel>;
 function renderPledge(overrides: Partial<Props> = {}) {
-  const onPledge = vi.fn().mockResolvedValue(undefined);
+  const onPledge = vi.fn().mockResolved(undefined);
   const props: Props = { campaign, connectedWallet: wallet, onPledge, ...overrides };
   const view = render(<CampaignDetailPanel {...props} />, { wrapper: MemoryRouter });
   return {
@@ -161,7 +161,7 @@ describe('Pledge form behavior', () => {
     const retry = deferred();
     const onPledge = vi
       .fn()
-      .mockRejectedValueOnce(new Error('Wallet rejected the request'))
+      .mockRejectedOnce(new Error('Wallet rejected the request'))
       .mockReturnValueOnce(retry.promise);
     const { user } = renderPledge({ onPledge });
     await user.clear(amount());
@@ -176,8 +176,8 @@ describe('Pledge form behavior', () => {
     expect(submit()).toBeEnabled();
     expect(screen.queryByText('Pledge submitted successfully.')).not.toBeInTheDocument();
     await user.click(within(alert).getByRole('button', { name: 'Retry' }));
-    expect(onPledge).toHaveBeenNthCalledWith(1, campaign.id, 42.5, 'XLM');
-    expect(onPledge).toHaveBeenNthCalledWith(2, campaign.id, 42.5, 'XLM');
+    expect(onPledge).toHaveBeenN4hCalledWith(1, campaign.id, 42.5, 'XLM');
+    expect(onPledge).toHaveBeenN4hCalledWith(2, campaign.id, 42.5, 'XLM');
     expect(onPledge).toHaveBeenCalledTimes(2);
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
     expect(form()).not.toHaveAttribute('aria-describedby');
@@ -209,10 +209,10 @@ describe('Pledge form behavior', () => {
       const { user } = renderPledge({ onPledge: vi.fn().mockRejectedValue(error) });
       await user.click(submit());
       expect(await screen.findByRole('alert')).toHaveTextContent(
-        'The pledge could not be completed. Please try again.'
+        'The pledge could not be completed. Please try again.',
       );
       expect(submit()).toBeEnabled();
-    }
+    },
   );
 
   it('disables pledging without a wallet and enables it after connecting', async () => {
@@ -251,7 +251,7 @@ describe('Pledge form behavior', () => {
     const { onPledge } = renderPledge({ isLoading: true });
     expect(screen.getByRole('region', { name: 'Loading campaign details' })).toHaveAttribute(
       'aria-busy',
-      'true'
+      'true',
     );
     expect(screen.queryByRole('form', { name: 'Pledge campaign' })).not.toBeInTheDocument();
     expect(onPledge).not.toHaveBeenCalled();

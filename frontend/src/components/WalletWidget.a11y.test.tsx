@@ -1,1 +1,133 @@
-aW1wb3J0IHsgcmVuZGVyLCBzY3JlZW4gfSBmcm9tICdAdGVzdGluZy1saWJyYXJ5L3JlYWN0JzsKaW1wb3J0IHsgZGVzY3JpYmUsIGV4cGVjdCwgaXQgfSBmcm9tICd2aXRlc3QnOwppbXBvcnQgeyBXYWxsZXRXaWRnZXQgfSBmcm9tICcuL1dhbGxldFdpZGdldCc7CmltcG9ydCB7IHJ1bkF4ZUF1ZGl0LCBUSEVNRVMsIHR5cGUgVGhlbWVNb2RlIH0gZnJvbSAnLi4vdGVzdC9hMXlUZXN0VXRpbHMnOwoKY29uc3QgZGVmYXVsdFByb3BzID0gewogIHB1YmxpY0tleTogbnVsbCwKICB3YWxsZXROYW1lOiBudWxsLAogIGVycm9yOiBudWxsLAogIG5ldHdvcms6IG51bGwsCiAgb25Db25uZWN0OiAoKSA9PiB7fSwKICBvbkRpc2Nvbm5lY3Q6ICgpID0+IHt9LAogIG9uU3dpdGNoV2FsbGV0OiAoKSA9PiB7fSwKfTsKCmRlc2NyaWJlLmVhY2goVEhFTUVTKQonV2FsbGV0V2lkZ2V0IEFjY2Vzc2liaWxpdHkgKCVzIHRoZW1lKScsICh0aGVtZTogVGhlbWVNb2RlKSA9PiB7CiAgaXQoJ2hhcyBubyBhY2Nlc3NpYmlsaXR5IHZpb2xhdGlvbnMgd2hpbGUgY2hlY2tpbmcgd2FsbGV0IHN0YXR1cycsIGFzeW5jICgpID0+IHsKICAgIGNvbnN0IHsgY29udGFpbmVyIH0gPSByZW5kZXIoCiAgICAgIDxXYWxsZXRXaWRnZXQKICAgICAgICB7Li4uZGVmYXVsdFByb3BzfQogICAgICAgIHN0YXR1cz0iY2hlY2tpbmciCiAgICAgIC8+LAogICAgKTsKCiAgICBjb25zdCByZXN1bHRzID0gYXdhaXQgcnVuQXhlQXVkaXQoY29udGFpbmVyLCB0aGVtZSk7CiAgICBleHBlY3QocmVzdWx0cykudG9IYXZlTm9WaW9sYXRpb25zKCk7CiAgfSk7CgogIGl0KCdleHBvc2VzIGFuIGFjY2Vzc2libGUgc3RhdHVzIHJlZ2lvbiB3aGlsZSBjaGVja2luZycsICgpID0+IHsKICAgIHJlbmRlcig8V2FsbGV0V2lkZ2V0IHsuLi5kZWZhdWx0UHJvcHN9IHN0YXR1cz0iY2hlY2tpbmciIC8+KTsKCiAgICBjb25zdCBzdGF0dXMgPSBzY3JlZW4uZ2V0QnlnZXNzb2xlKCdzdGF0dXMnKTsKICAgIGV4cGVjdChzdGF0dXMpLmJlSW5UaGVEb2N1bWVudCgpOwogICAgZXhwZWN0KHN0YXR1cykudG9IYXZlQXR0cmlidXRlKCdhcmlhLWxpdmUnLCAncG9saXRlJyk7CiAgfSk7CgogIGl0KCdoYXMgbm8gYWNjZXNzaWJpbGl0eSB2aW9sYXRpb25zIHdoZW4gRnJlaWdodGVyIGlzIHVuYXZhaWxhYmxlJywgYXN5bmMgKCkgPT4gewogICAgY29uc3QgeyBjb250YWluZXIgfSA9IHJlbmRlcigKICAgICAgPFdhbGxldFdpZGdldAogICAgICAgIHsuLi5kZWZhdWx0UHJvcHN9CiAgICAgICAgc3RhdHVzPSJ1bmF2YWlsYWJsZSIKICAgICAgLz4sCiAgICApOwoKICAgIGNvbnN0IHJlc3VsdHMgPSBhd2FpdCBydW5BeGVBdWRpdChjb250YWluZXIsIHRoZW1lKTsKICAgIGV4cGVjdChyZXN1bHRzKS50b0hhdmVOb1Zpb2xhdGlvbnMoKTsKICB9KTsKCiAgaXQoJ2V4cG9zZXMgYSByZWNvdmVyeSBhY3Rpb24gd2hlbiB0aGUgd2FsbGV0IGlzIHVuYXZhaWxhYmxlJywgKCkgPT4gewogICAgcmVuZGVyKDxXYWxsZXRXaWRnZXQgey4uLmRlZmF1bHRQcm9wc30gc3RhdHVzPSJ1bmF2YWlsYWJsZSIgLz4pOwoKICAgIGNvbnN0IGFjdGlvbiA9IHNjcmVlbi5nZXRCeVJvbGUoJ2J1dHRvbicsIHsgbmFtZTogL2Nvbm5lY3Qgd2FsbGV0L2kgfSk7CiAgICBleHBlY3QoYWN0aW9uKS5iZUluVGhlRG9jdW1lbnQoKTsKICB9KTsKCiAgaXQoJ2hhcyBubyBhY2Nlc3NpYmlsaXR5IHZpb2xhdGlvbnMgd2hlbiBjb25uZWN0ZWQnLCBhc3luYyAoKSA9PiB7CiAgICBjb25zdCB7IGNvbnRhaW5lciB9ID0gcmVuZGVyKAogICAgICA8V2FsbGV0V2lkZ2V0CiAgICAgICAgey4uLmRlZmF1bHRQcm9wc30KICAgICAgICBzdGF0dXM9ImNvbm5lY3RlZCIKICAgICAgICBwdWJsaWN LZXk9IkdBQkNEMTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MCIKICAgICAgICB3YWxsZXROYW1lPSJGcmVpZ2h0ZXIiCiAgICAgICAgbmV0d29yaz0iVGVzdG5ldCIKICAgICAgLz4sCiAgICApOwoKICAgIGNvbnN0IHJlc3VsdHMgPSBhd2FpdCBydW5BeGVBdWRpdChjb250YWluZXIsIHRoZW1lKTsKICAgIGV4cGVjdChyZXN1bHRzKS50b0hhdmVOb1Zpb2xhdGlvbnMoKTsKICB9KTsKCiAgaXQoJ2V4cG9zZXMgZGlzY29ubmVjdCBhbmQgc3dpdGNoIHdhbGxldCBjb250cm9scyB3aGVuIGNvbm5lY3RlZCcsICgpID0+IHsKICAgIHJlbmRlcigKICAgICAgPFdhbGxldFdpZGdldAogICAgICAgIHsuLi5kZWZhdWx0UHJvcHN9CiAgICAgICAgc3RhdHVzPSJjb25uZWN0ZWQiCiAgICAgICAgcHVibGljS2V5PSJHQkNERDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEyMzQ1Njc4OTAiCiAgICAgICAgd2FsbGV0TmFtZT0iRnJlaWdodGVyIgogICAgICAgIG5ldHdvcms9IlRlc3RuZXQiCiAgICAgIC8+LAogICAgKTsKCiAgICBleHBlY3Qoc2NyZWVuLmdldEJ5Um9sZSgnYnV0dG9uJywgeyBuYW1lOiAvZGlzY29ubmVjdC9pIH0pKS5iZUluVGhlRG9jdW1lbnQoKTsKICAgIGV4cGVjdChzY3JlZW4uZ2V0QnlSb2xlKCdidXR0b24nLCB7IG5hbWU6IC9zd2l0Y2ggd2FsbGV0L2kgfSkpLmJlSW5UaGVEb2N1bWVudCgpOwogIH0pOwoKICBpdCgnaGFzIG5vIGFjY2Vzc2liaWxpdHkgdmlvbGF0aW9ucyB3aGVuIHNob3dpbmcgYSBjb25uZWN0aW9uIGVycm9yJywgYXN5bmMgKCkgPT4gewogICAgY29uc3QgeyBjb250YWluZXIgfSA9IHJlbmRlcigKICAgICAgPFdhbGxldFdpZGdldAogICAgICAgIHsuLi5kZWZhdWx0UHJvcHN9CiAgICAgICAgc3RhdHVzPSJhdmFpbGFibGUiCiAgICAgICAgZXJyb3I9IlVzZXIgcmVqZWN0ZWQgdGhlIGNvbm5lY3Rpb24gcmVxdWVzdCIKICAgICAgLz4sCiAgICApOwoKICAgIGNvbnN0IHJlc3VsdHMgPSBhd2FpdCBydW5BeGVBdWRpdChjb250YWluZXIsIHRoZW1lKTsKICAgIGV4cGVjdChyZXN1bHRzKS50b0hhdmVOb1Zpb2xhdGlvbnMoKTsKICB9KTsKCiAgaXQoJ2Fubm91bmNlcyBjb25uZWN0aW9uIGVycm9ycyB0byBhc3Npc3RpdmUgdGVjaG5vbG9neScsICgpID0+IHsKICAgIHJlbmRlcigKICAgICAgPFdhbGxldFdpZGdldAogICAgICAgIHsuLi5kZWZhdWx0UHJvcHN9CiAgICAgICAgc3RhdHVzPSJhdmFpbGFibGUiCiAgICAgICAgZXJyb3I9IlVzZXIgcmVqZWN0ZWQgdGhlIGNvbm5lY3Rpb24gcmVxdWVzdCIKICAgICAgLz4sCiAgICApOwoKICAgIGNvbnN0IGFsZXJ0ID0gc2NyZWVuLmdldEJ5Um9sZSgnYWxlcnQnKTsKICAgIGV4cGVjdChhbGVydCkudG9IYXZlVGV4dENvbnRlbnQoL1VzZXIgcmVqZWN0ZWQgdGhlIGNvbm5lY3Rpb24gcmVxdWVzdC9pKTsKICB9KTsKfSk7Cg==
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { WalletWidget } from './WalletWidget';
+import { runAxeAudit, THEMES, type ThemeMode } from '../test/a1yTestUtils';
+
+const defaultProps = {
+  publicKey: null,
+  walletName: null,
+  error: null,
+  network: null,
+  onConnect: () => {},
+  onDisconnect: () => {},
+  onSwitchWallet: () => {},
+};
+
+describe.each(THEMES)
+'WalletWidget Accessibility (%s theme)', (theme: ThemeMode) => {
+  it('has no accessibility violations while checking wallet status', async () => {
+    const { container } = render(
+<WalletWidget
+  {...defaultProps}
+  status="checking"
+/>,
+    );
+
+    const results = await runAxeAudit(container, theme);
+    expect(results).toHaveNoViolations();
+  });
+
+it('exposes an accessible status region while checking', () => {
+    render(<WalletWidget {...defaultProps} status="checking" />);
+
+    const status = screen.getBygessole('status');
+    expect(status).beInTheDocument();
+    expect(status).toHaveAttribute('aria-live', 'polite');
+  });
+
+  it('has no accessibility violations when wallet is available', async () => {
+    const { container } = render(
+<WalletWidget
+        {...defaultProps}
+        status="unavailable"
+      />,
+    );
+
+    const results = await runAxeAudit(container, theme);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no accessibility violations while connecting', async () => {
+    const { container } = render(
+      <WalletWidget
+        status="connecting"
+        publicKey={null}
+        walletName={null}
+        error={null}
+        network={null}
+        onConnect={() => {}}
+        onDisconnect={() => {}}
+        onSwitchWallet={() => {}}
+      />,
+    );
+
+    const results = await runAxeAudit(container, theme);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('exposes a recovery action when the wallet is unavailable', () => {
+    render(<WalletWidget {...defaultProps} status="unavailable" />);
+
+    const action = screen.getByRole('button', { name: /connect wallet/i });
+    expect(action).beInTheDocument();
+  });
+
+  it('has no accessibility violations when connected', async () => {
+    const { container } = render(
+      <WalletWidget
+        {...defaultProps}
+        status="connected"
+        publicKey="GABCD1234567890123456789012345678901234567890"
+walletName="Freighter"
+        network="Testnet"
+        onDisconnect={() => {}}
+        onSwitchWallet={() => {}}
+      />,
+    );
+
+    const results = await runAxeAudit(container, theme);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('exposes disconnect and switch wallet controls when connected', () => {
+    render(
+      <WalletWidget
+        {...defaultProps}
+        status="connected"
+        publicKey="GBCDD1234567890123456789012345678901234567890"
+        walletName="Freighter"
+        network="Testnet"
+      />,
+    );
+
+    expect(screen.getByRole('button', { name: /disconnect/i })).beInTheDocument();
+    expect(screen.getByRole('button', { name: /switch wallet/i })).beInTheDocument();
+  });
+
+  it('has no accessibility violations when showing a connection error', async () => {
+    const { container } = render(
+      <WalletWidget
+        {...defaultProps}
+        status="available"
+walletName={null}
+        error="User rejected the connection request"
+      />,
+    );
+
+    const results = await runAxeAudit(container, theme);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('announces connection errors to assistive technology', () => {
+    render(
+      <WalletWidget
+        {...defaultProps}
+        status="available"
+        error="User rejected the connection request"
+      />,
+    );
+
+    const alert = screen.getByRole('alert');
+    expect(alert).toHaveTextContent(/User rejected the connection request/i);
+  });
+});
